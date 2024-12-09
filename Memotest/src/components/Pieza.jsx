@@ -1,9 +1,9 @@
 import './Pieza.css'
 
-const Pieza = () => {
+const Pieza = ({valor}) => {
 
     return (
-    <div> Hola </div>
+    <button> {valor} </button>
     )
 }
 
