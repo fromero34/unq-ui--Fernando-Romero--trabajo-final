@@ -2,8 +2,10 @@ import { useState } from 'react'
 import './App.css'
 import Pieza from './components/Pieza'
 import Tablero from './components/Tablero'
+import { useEffect } from 'react'
 
-const emoji = [...'🍇🍊🍋🍎🍐🥥',...'🍇🍊🍋🍎🍐🥥']
+const emoji = [...'🍇🍊🍋🍎🍐🥥',...'🍇🍊🍋🍎🍐🥥'].sort(() => Math.random() - 0.5)
+                                                       /*Algoritmo para mezclar elementos de un array*/
 
 function App() {
 
