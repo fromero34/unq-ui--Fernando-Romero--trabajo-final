@@ -3,13 +3,15 @@ import './App.css'
 import Pieza from './components/Pieza'
 import Tablero from './components/Tablero'
 
-const emoji = [...'🍇🍊🍋🍎🍐🥥']
-const piezasMemo = [1,2,3,4,1,2,3,4]
+const emoji = [...'🍇🍊🍋🍎🍐🥥',...'🍇🍊🍋🍎🍐🥥']
 
 function App() {
 
   return (
-    <Tablero piezas={piezasMemo} />
+    <div> 
+    <h2> MEMOTEST </h2> 
+    <Tablero piezas={emoji} />
+    </div>
   )
 }
 
