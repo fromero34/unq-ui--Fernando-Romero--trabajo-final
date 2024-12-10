@@ -7,10 +7,16 @@ const emoji = [...'🍇🍊🍋🍎🍐🥥',...'🍇🍊🍋🍎🍐🥥']
 
 function App() {
 
+  const [bool,setBool] = useState(false)
+
+  const handleClick = () => {
+    setBool(!bool)
+  }
+
   return (
     <div> 
-    <h2> MEMOTEST </h2> 
-    <Tablero piezas={emoji} />
+    <h2> MEMOTEST </h2>
+    <Tablero piezas={emoji} handleClick={handleClick} bool={bool}/>
     </div>
   )
 }
