@@ -1,21 +1,31 @@
 import { useState } from 'react'
 import './App.css'
-import Pieza from './components/Pieza'
 import Tablero from './components/Tablero'
 import { useEffect } from 'react'
 
-const imagen = [...'🍇🍊🍋🍎🍐🥥',...'🍇🍊🍋🍎🍐🥥'].sort(() => Math.random() - 0.5)
-                                                       /*Algoritmo para mezclar elementos de un array*/
-
+const imagen = [...'🍇🍊🍋🍎🍐🥥',...'🍇🍊🍋🍎🍐🥥']
+                                                       
 function App() {
 
   const [piezasMezcladas, setPiezasMezcladas] = useState([])
   const [seleccionado, setSeleccionado] = useState(null)
   const [bloquearTablero, setBloquearTablero] = useState(false)
+  const [piezasAdivinadas, setPiezasAdivinadas] = useState(0)
+  const [victoria, setVictoria] = useState('')
+  const [reiniciarJuego , setReiniciarJuego] = useState(false)
 
-  useEffect ( () => {
-    setPiezasMezcladas(imagen.map((imagen,i) => ({index: i, imagen, girada:false})))
-  },[])
+  useEffect ( () => {               /*Algoritmo para mezclar elementos de un array*/
+    setPiezasMezcladas(imagen.sort(() => Math.random() - 0.5).map((imagen,i) => ({index: i, imagen, girada:false})))
+  },[reiniciarJuego])
+
+  const resetearJuego = () => {
+    setPiezasMezcladas([])
+    setSeleccionado(null)
+    setBloquearTablero(false)
+    setPiezasAdivinadas(0)
+    setVictoria('')
+    setReiniciarJuego(!reiniciarJuego)
+  }
 
   const handleClick = (pieza) => {
     const piezaGirada = {...pieza, girada:true}
@@ -28,6 +38,11 @@ function App() {
     /* Si matchean las piezas*/
     } else if (seleccionado.imagen === pieza.imagen) {
       setSeleccionado(null)
+      if (piezasAdivinadas === (piezasMezcladas.length / 2) - 1) {
+        setVictoria('¡Felicitaciones, ganaste el juego!')
+      } else {
+        setPiezasAdivinadas(piezasAdivinadas + 1)
+      }
     /* No matchean las piezas*/
     } else {
       setBloquearTablero(true)
@@ -44,7 +59,9 @@ function App() {
   return (
     <div> 
     <h1> MEMOTEST </h1>
+    <h1> {victoria} </h1>
     <Tablero piezas={piezasMezcladas} handleClick={handleClick} bloquearTablero={bloquearTablero}/>
+    <button onClick={resetearJuego}> Comenzar de nuevo </button>
     </div>
   )
 }
