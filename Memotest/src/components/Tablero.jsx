@@ -1,12 +1,12 @@
 import Pieza from './Pieza'
 import './Tablero.css'
 
-const Tablero = ({piezas, handleClick, bool}) => {
+const Tablero = ({piezas, handleClick}) => {
 
     return (
         <div className='tablero'>
-            {piezas.map((valor) => {
-                return <Pieza valor={valor} handleClick={handleClick} bool={bool}/>
+            {piezas.map((pieza, i) => {
+                return <Pieza key={`${i}_${pieza.imagen}`} pieza={pieza} handleClick={handleClick}/>
             })}
         </div>
     )

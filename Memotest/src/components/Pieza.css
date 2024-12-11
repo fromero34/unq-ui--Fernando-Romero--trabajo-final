@@ -26,7 +26,7 @@
 }
 
 .pieza-dorso {
-    background-color: #640a10;
+    background-color: #c21f2a;
     transform: rotateY(180deg);
     box-shadow: 5px 5px 10px 0px rgb(0 0 0 / 50%);
     display: flex;
@@ -36,5 +36,10 @@
 }
 
 .pieza-frente {
-    background-color: #4744f5;
+    background-color: #4dcbdb;
+    box-shadow: 5px 5px 10px 0px rgb(0 0 0 / 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 55px;
 }

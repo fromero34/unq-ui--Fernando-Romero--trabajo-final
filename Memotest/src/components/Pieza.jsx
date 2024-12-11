@@ -1,14 +1,12 @@
 import './Pieza.css'
 
-const Pieza = ({valor, handleClick, bool}) => {
+const Pieza = ({pieza, handleClick}) => {
 
     return (
-    <div className='pieza' onClick={() => handleClick()}>
-        <div className={`pieza-interna ${bool && 'pieza-girada'}`}>
-            <div className='pieza-frente'> {'?'} </div>
-            <div className='pieza-dorso'>
-                {valor}
-            </div>
+    <div className='pieza' onClick={() => (!pieza.girada && handleClick(pieza))}>
+        <div className={`pieza-interna ${pieza.girada && 'pieza-girada'}`}>
+            <div className='pieza-frente'> {'❔'} </div>
+            <div className='pieza-dorso'> {pieza.imagen} </div>
         </div>
     </div>
     )
